@@ -9,6 +9,7 @@ from sklearn.cluster import KMeans
 import json
 import requests
 import time
+#import pandas as pd
 
 headers = {'User-agent':'Mozilla/5.0'}
 
@@ -46,11 +47,12 @@ def df_suggest(df, _type='liste', kwToRemove=[]):
         data[expression] = suggest(expression, 1)
     print(data)
 
+KW = 'audi tt rs'
 
-_suggest = suggest('audi tt rs',3)
-distribution(_suggest, kwToRemove='audi tt rs')
+_suggest = suggest(KW,2)
+_suggest
 
-fdist = distribution(_suggest, kwToRemove='audi tt rs')
-plt = fdist.plot(40,cumulative=False, title='"audi tt rs" - Distrib. Google Suggest')
+distribution(_suggest, kwToRemove=KW)
 
-
+fdist = distribution(_suggest, kwToRemove=KW)
+plt = fdist.plot(40,cumulative=False, title='"'+KW+'" - Distrib. Google Suggest')
