@@ -48,11 +48,14 @@ def df_suggest(df, _type='liste', kwToRemove=[]):
     print(data)
 
 KW = 'audi tt rs'
+max_depth = 3 #ne poussez pas trop le bouchon 4 ou 5 max
 
-_suggest = suggest(KW,2)
-_suggest
+_suggest = suggest(KW,max_depth)
+_suggest # données GSuggest
 
-distribution(_suggest, kwToRemove=KW)
+distribution(_suggest, kwToRemove=KW) # données à exporter
 
 fdist = distribution(_suggest, kwToRemove=KW)
-plt = fdist.plot(40,cumulative=False, title='"'+KW+'" - Distrib. Google Suggest')
+max_KW_to_graph = 40 #nombre de KW à afficher sur le graph
+
+plt = fdist.plot(max_KW_to_graph,cumulative=False, title='"'+KW+'" - Distrib. Google Suggest')
